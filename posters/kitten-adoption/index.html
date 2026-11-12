@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitten Adoption Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FFF7EC;
+    --ink: #2B1E16;
+    --muted: #6B5646;
+    --ginger: #E07A2E;
+    --ginger-deep: #B9561A;
+    --blush: #F6DCC4;
+    --line: #E8D3BE;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #d9cbbd; }
+  body { font-family: Inter, system-ui, sans-serif; color: var(--ink); }
+
+  .poster {
+    width: 210mm; height: 297mm; margin: 0 auto;
+    background: var(--paper);
+    display: flex; flex-direction: column;
+    overflow: hidden; position: relative;
+  }
+
+  /* ---------- Header ---------- */
+  header { padding: 9mm 12mm 5mm; text-align: center; }
+  .eyebrow {
+    display: inline-block; font-weight: 700; font-size: 10.5pt; letter-spacing: .14em;
+    text-transform: uppercase; color: #fff; background: var(--ginger-deep);
+    padding: 1.6mm 4.5mm; border-radius: 99px;
+  }
+  h1 {
+    font-family: Fraunces, Georgia, serif; font-weight: 800;
+    font-size: 40pt; line-height: .98; letter-spacing: -.01em;
+    margin-top: 3mm;
+  }
+  h1 em { font-style: normal; color: var(--ginger-deep); }
+  .ar {
+    font-family: "Noto Kufi Arabic", sans-serif; font-weight: 600;
+    font-size: 14pt; color: var(--muted); margin-top: 2.5mm;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 6mm; padding: 0 12mm; }
+  .hero-photo {
+    position: relative; border-radius: 6mm; overflow: hidden;
+    height: 80mm; box-shadow: 0 2mm 6mm rgba(80,40,10,.18);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 45%; display: block; }
+  .hero-photo .tag {
+    position: absolute; left: 4mm; bottom: 4mm;
+    background: rgba(255,247,236,.94); color: var(--ink);
+    font-weight: 600; font-size: 9.5pt; padding: 1.6mm 3.2mm; border-radius: 99px;
+  }
+
+  .story { display: flex; flex-direction: column; justify-content: center; gap: 3.2mm; }
+  .story p { font-size: 10.5pt; line-height: 1.45; color: var(--ink); }
+  .story p.lead { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 15pt; line-height: 1.22; }
+  .story .note { font-size: 9pt; color: var(--muted); }
+
+  /* ---------- Journey ---------- */
+  .journey { padding: 6mm 12mm 0; }
+  .journey h2, .facts-title {
+    font-size: 9.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ginger-deep); margin-bottom: 3mm;
+  }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  .step figure { margin: 0; }
+  .step .ph { height: 32mm; border-radius: 4mm; overflow: hidden; background: var(--blush); }
+  .step img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .step figcaption { margin-top: 2mm; font-size: 9.5pt; line-height: 1.3; color: var(--muted); }
+  .step figcaption b { display: block; color: var(--ink); font-size: 10.5pt; }
+
+  /* ---------- Facts ---------- */
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; padding: 5mm 12mm 0; }
+  .fact {
+    background: var(--blush); border-radius: 4mm; padding: 4mm 4mm 3.5mm; text-align: center;
+  }
+  .fact .big { font-family: Fraunces, Georgia, serif; font-weight: 800; font-size: 22pt; line-height: 1; color: var(--ginger-deep); }
+  .fact .big small { font-size: 13pt; }
+  .fact .lbl { font-size: 9.5pt; margin-top: 1.6mm; color: var(--ink); font-weight: 500; }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    margin: 5mm 12mm 0; background: var(--ink); color: var(--paper);
+    border-radius: 6mm; padding: 6mm 8mm; display: flex; align-items: center; justify-content: space-between; gap: 6mm;
+  }
+  .cta .ask { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 15pt; line-height: 1.2; }
+  .cta .ask span { display: block; font-family: Inter, sans-serif; font-weight: 500; font-size: 10pt; opacity: .8; margin-top: 1.2mm; }
+  .cta .phone { text-align: right; white-space: nowrap; }
+  .cta .phone .lbl { font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; opacity: .75; font-weight: 600; }
+  .cta .phone .num { font-family: Fraunces, Georgia, serif; font-weight: 800; font-size: 30pt; letter-spacing: .01em; color: #FFB27A; line-height: 1.05; }
+
+  /* ---------- Tear-off tabs ---------- */
+  .tabs {
+    margin-top: auto; display: grid; grid-template-columns: repeat(8, 1fr);
+    border-top: 0.5mm dashed var(--muted); height: 30mm; margin-top: auto;
+  }
+  .tabs div {
+    border-right: 0.4mm dashed var(--line);
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    display: flex; align-items: center; justify-content: center;
+    white-space: nowrap; font-size: 11pt; letter-spacing: .02em; font-weight: 700; color: var(--ink);
+  }
+  .tabs div:first-child { border-right: none; }
+  .tabs div span { font-weight: 500; color: var(--muted); font-size: 8.5pt; margin-top: 2mm; }
+
+  @media screen and (max-width: 700px) {
+    html, body { background: var(--paper); }
+    .poster { width: 100%; height: auto; }
+  }
+  @media print { html, body { background: var(--paper); } }
+</style>
+</head>
+<body>
+<main class="poster">
+  <header>
+    <span class="eyebrow">Adopt me · ready in 5 days</span>
+    <h1>One eye, <em>a whole lot</em><br>of heart</h1>
+    <p class="ar">قطة صغيرة تبحث عن بيت محب</p>
+  </header>
+
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="photos/walking.jpg" alt="Small ginger and white kitten in a recovery cone, looking at the camera">
+      <span class="tag">Healing well at the vet</span>
+    </div>
+    <div class="story">
+      <p class="lead">She doesn't belong on the street.</p>
+      <p>We found her outside, the runt of her litter, with one eye badly infected. We trapped her and took her straight to the vet.</p>
+      <p>The eye had been lost in a fight, so she had surgery to close it. She's recovering now, and needs a kind soul to take her home.</p>
+      <p class="note">One-eyed cats live full, playful, normal lives. Gender not yet confirmed, most likely a girl.</p>
+    </div>
+  </section>
+
+  <section class="journey">
+    <h2>Her progress so far</h2>
+    <div class="steps">
+      <figure class="step">
+        <div class="ph"><img src="photos/rescue-day.jpg" alt="Kitten on the vet table on rescue day, left eye swollen" style="object-position:50% 52%"></div>
+        <figcaption><b>Rescue day</b>Infected eye, just 400 g</figcaption>
+      </figure>
+      <figure class="step">
+        <div class="ph"><img src="photos/after-surgery.jpg" alt="Kitten resting in a cone after eye surgery" style="object-position:58% 62%"></div>
+        <figcaption><b>After surgery</b>Resting in her cone</figcaption>
+      </figure>
+      <figure class="step">
+        <div class="ph"><img src="photos/now.jpg" alt="Kitten up and about in her cone" style="object-position:50% 72%"></div>
+        <figcaption><b>Today</b>Up and about, growing stronger</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Quick facts">
+    <div class="fact"><div class="big">400<small>g</small> → 600<small>g</small></div><div class="lbl">Gaining weight</div></div>
+    <div class="fact"><div class="big">5 <small>days</small></div><div class="lbl">Until she can go home</div></div>
+    <div class="fact"><div class="big" style="font-size:15pt;line-height:1.35">Arabian Paw</div><div class="lbl">Vet, where she is now</div></div>
+  </section>
+
+  <section class="cta">
+    <div class="ask">She has nowhere to go.<br>Could your home be hers?<span>Call to ask about adopting her.</span></div>
+    <div class="phone"><div class="lbl">Adoption contact</div><div class="num">050 602 6622</div></div>
+  </section>
+
+  <footer class="tabs" aria-label="Tear-off contact tabs">
+    <div><b>050 602 6622</b></div>
+    <div><b>050 602 6622</b></div>
+    <div><b>050 602 6622</b></div>
+    <div><b>050 602 6622</b></div>
+    <div><b>050 602 6622</b></div>
+    <div><b>050 602 6622</b></div>
+    <div><b>050 602 6622</b></div>
+    <div><b>050 602 6622</b></div>
+  </footer>
+</main>
+</body>
+</html>
