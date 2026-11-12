@@ -6,114 +6,225 @@
 <title>Winkie Adoption Poster</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ivory: #F7F2EA;
-    --linen: #EFE6D9;
-    --espresso: #2A211B;
-    --taupe: #8A7A6B;
-    --ginger: #C9773B;
-    --rule: #D9CCBB;
+    --ink: #2E2A5A;        /* friendly navy */
+    --cream: #FFF8F0;
+    --pink: #F7A9C4;
+    --hot: #F25C8E;
+    --blush: #FFE3EC;
+    --ginger: #F2913D;
+    --lilac: #B7A3F0;
+    --mint: #8FD6BE;
+    --butter: #FFE9A8;
   }
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: #e6dccf; }
+  html, body { background: #f3d9e3; }
   body {
-    font-family: Inter, system-ui, sans-serif; color: var(--espresso);
-    -webkit-font-smoothing: antialiased;
+    font-family: Fredoka, ui-rounded, system-ui, sans-serif; color: var(--ink);
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
 
+  /* ---------- page: pink gingham ---------- */
   .poster {
     width: 210mm; height: 297mm; margin: 0 auto; position: relative; overflow: hidden;
-    background:
-      radial-gradient(120mm 90mm at 50% 42%, #FBF7F1 0%, rgba(251,247,241,0) 70%),
-      var(--ivory);
-    display: flex; flex-direction: column; align-items: center;
-    padding: 17mm 20mm 15mm;
-  }
-  /* fine stationery frame */
-  .poster::before {
-    content: ""; position: absolute; inset: 7mm;
-    border: 0.35mm solid var(--rule); border-radius: 1mm; pointer-events: none;
+    background-color: #fff;
+    background-image:
+      linear-gradient(90deg, rgba(247,169,196,.55) 50%, transparent 50%),
+      linear-gradient(rgba(247,169,196,.55) 50%, transparent 50%);
+    background-size: 13mm 13mm;
   }
 
-  .eyebrow {
-    display: flex; align-items: center; gap: 4mm;
-    font-size: 8.5pt; font-weight: 500; letter-spacing: .42em; text-transform: uppercase; color: var(--taupe);
+  /* ---------- the cream card ---------- */
+  .card {
+    position: absolute; left: 10mm; top: 10mm; width: 190mm; height: 277mm;
+    background-color: var(--cream);
+    background-image: radial-gradient(rgba(46,42,90,.09) 0.35mm, transparent 0.45mm);
+    background-size: 6mm 6mm;
+    border: 0.9mm solid var(--ink); border-radius: 7mm;
+    box-shadow: 2.2mm 2.2mm 0 var(--ink);
   }
-  .eyebrow::before, .eyebrow::after { content: ""; width: 14mm; height: 0.3mm; background: var(--rule); }
+  .card > * { position: absolute; }
 
-  h1 {
-    font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500; font-style: italic;
-    font-size: 104pt; line-height: .86; letter-spacing: -.01em; margin-top: 5mm;
-  }
-  .sub {
-    font-family: "Cormorant Garamond", Georgia, serif; font-weight: 500;
-    font-size: 17pt; letter-spacing: .02em; color: var(--taupe); margin-top: 2mm;
-  }
-  .sub em { color: var(--ginger); }
-
-  .arch {
-    margin-top: 8mm; width: 122mm; height: 150mm; position: relative;
-  }
-  .arch .frame {
-    position: absolute; inset: 0; border-radius: 61mm 61mm 3mm 3mm; overflow: hidden;
-    box-shadow: 0 6mm 14mm -6mm rgba(70,45,25,.35), 0 1mm 3mm rgba(70,45,25,.12);
-  }
-  .arch img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 30%; display: block; }
-  /* offset outline arch for depth */
-  .arch::before {
-    content: ""; position: absolute; inset: -3.2mm; border-radius: 64mm 64mm 5mm 5mm;
-    border: 0.35mm solid var(--ginger); opacity: .55;
+  /* washi tape */
+  .tape {
+    width: 46mm; height: 11mm; opacity: .9;
+    background-color: var(--lilac);
+    background-image: radial-gradient(rgba(255,255,255,.75) 0.7mm, transparent 0.8mm);
+    background-size: 3.4mm 3.4mm;
+    clip-path: polygon(2% 0, 98% 6%, 100% 50%, 97% 100%, 1% 94%, 0 50%);
   }
 
-  .traits {
-    margin-top: 10mm; display: flex; align-items: center; gap: 6mm;
-    font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
-    font-size: 21pt; letter-spacing: .04em;
-  }
-  .traits i { width: 1.6mm; height: 1.6mm; border-radius: 50%; background: var(--ginger); display: block; }
+  /* sticker system: white die-cut outline + soft drop */
+  .stk { filter: drop-shadow(0.5mm 0.8mm 0 rgba(46,42,90,.22)); overflow: visible; }
+  .stk .o { fill: #fff; stroke: #fff; stroke-width: 5; stroke-linejoin: round; }
+  .stk .f { stroke: var(--ink); stroke-width: 1.2; stroke-linejoin: round; }
 
+  /* ---------- header ---------- */
+  .upfor {
+    left: 50%; top: 9mm; transform: translateX(-50%) rotate(-2deg);
+    background: var(--ink); color: var(--cream);
+    font-weight: 600; font-size: 14pt; letter-spacing: .22em; text-transform: uppercase;
+    padding: 1.6mm 6mm 1.8mm 6.6mm; border-radius: 99px;
+  }
+  .headline { left: 8mm; top: 19mm; width: 174mm; height: 33mm; }
+  .tagline {
+    left: 0; right: 0; top: 52mm; text-align: center;
+    font-family: "Patrick Hand", cursive; font-size: 21pt; line-height: 1;
+  }
+  .tagline span { position: relative; display: inline-block; }
+  .tagline svg { position: absolute; left: -2%; width: 104%; bottom: -3.6mm; height: 4mm; }
+
+  /* ---------- Winkie ---------- */
+  .kitty {
+    left: 4mm; top: 63mm; height: 156mm;
+    transform: rotate(-3deg); transform-origin: 50% 100%;
+    filter: drop-shadow(1.2mm 1.8mm 0 rgba(46,42,90,.18));
+  }
+
+  /* speech bubble */
+  .bubble {
+    left: 93mm; top: 66mm; width: 86mm; padding: 4.4mm 5mm 4.8mm;
+    background: #fff; border: 0.8mm solid var(--ink); border-radius: 12mm;
+    box-shadow: 1.4mm 1.4mm 0 var(--ink);
+    font-family: "Patrick Hand", cursive; font-size: 19pt; line-height: 1.05; text-align: center;
+    transform: rotate(2deg);
+  }
+  .bubble b { color: var(--hot); font-weight: 400; }
+  .dot { border-radius: 50%; background: #fff; border: 0.7mm solid var(--ink); }
+
+  /* name */
+  .hi { left: 96mm; top: 103mm; font-family: "Patrick Hand", cursive; font-size: 19pt; transform: rotate(-4deg); }
+  .name { left: 92mm; top: 107mm; width: 92mm; height: 30mm; }
+
+  /* story note */
+  .note {
+    left: 93mm; top: 143mm; width: 87mm; padding: 8mm 5.5mm 5mm;
+    background-color: var(--butter);
+    background-image: repeating-linear-gradient(transparent 0, transparent 6.35mm, rgba(46,42,90,.12) 6.35mm, rgba(46,42,90,.12) 6.6mm);
+    background-position: 0 7.4mm;
+    border: 0.7mm solid var(--ink); border-radius: 2mm;
+    box-shadow: 1.4mm 1.4mm 0 var(--ink);
+    transform: rotate(1.6deg);
+    font-family: "Patrick Hand", cursive; font-size: 14.5pt; line-height: 6.6mm;
+  }
+  .note strong { font-weight: 400; color: var(--hot); }
+  .note .tape { left: 50%; top: -5mm; width: 34mm; height: 9.5mm; transform: translateX(-50%) rotate(-3deg); position: absolute; background-color: var(--mint); }
+
+  /* traits */
+  .traits { left: 0; right: 0; top: 214mm; display: flex; justify-content: center; gap: 6mm; }
+  .trait {
+    display: inline-flex; align-items: center; gap: 2.4mm;
+    background: #fff; border: 0.8mm solid var(--ink); border-radius: 99px;
+    padding: 1.6mm 5mm 1.6mm 2mm; box-shadow: 1.2mm 1.2mm 0 var(--ink);
+    font-weight: 600; font-size: 16pt;
+  }
+  .trait:nth-child(1) { transform: rotate(-3deg); }
+  .trait:nth-child(2) { transform: rotate(2deg) translateY(1mm); }
+  .trait:nth-child(3) { transform: rotate(-1.5deg); }
+  .trait .ic { width: 9.5mm; height: 9.5mm; border-radius: 50%; display: grid; place-items: center; border: 0.6mm solid var(--ink); }
+  .trait .ic svg { width: 6mm; height: 6mm; }
+
+  /* contact ticket */
   .contact {
-    margin-top: auto; width: 100%; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 9mm;
-    border-top: 0.3mm solid var(--rule); padding-top: 7mm;
+    left: 8mm; right: 8mm; top: 236mm; height: 32mm;
+    background: var(--ink); color: var(--cream); border-radius: 5mm;
+    display: flex; align-items: center; gap: 5mm; padding: 0 7mm;
   }
-  .contact .lbl { font-size: 8pt; font-weight: 500; letter-spacing: .32em; text-transform: uppercase; color: var(--taupe); }
-  .contact .left { text-align: right; }
-  .contact .left .v, .contact .right .v { font-family: "Cormorant Garamond", Georgia, serif; font-size: 19pt; font-weight: 600; margin-top: 1mm; }
-  .contact .phone {
-    text-align: left; padding-left: 9mm; border-left: 0.3mm solid var(--rule);
-  }
-  .contact .phone .v {
-    font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600;
-    font-size: 30pt; letter-spacing: .03em; line-height: 1.05; margin-top: 1mm; white-space: nowrap; font-variant-numeric: lining-nums;
-  }
-
-  @media screen and (max-width: 700px) {
-    .poster { width: 100%; height: auto; padding: 14mm 8mm; }
-    h1 { font-size: 64pt; } .arch { width: 100%; height: auto; aspect-ratio: 122/150; }
-    .contact { grid-template-columns: 1fr; text-align: center; } .contact .left { text-align: center; }
-  }
+  .contact .phone-ic { width: 16mm; height: 16mm; flex: none; border-radius: 50%; background: var(--hot); display: grid; place-items: center; border: 0.7mm solid var(--cream); }
+  .contact .lbl { font-family: "Patrick Hand", cursive; font-size: 15pt; line-height: 1; color: var(--pink); }
+  .contact .num { font-weight: 700; font-size: 31pt; letter-spacing: .02em; line-height: 1.05; white-space: nowrap; }
+  .contact .where { margin-left: auto; text-align: right; border-left: 0.5mm dashed rgba(255,248,240,.45); padding-left: 6mm; }
+  .contact .where .v { font-weight: 600; font-size: 15pt; line-height: 1.15; white-space: nowrap; }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21.2s-8-4.9-9.9-9.8C.6 7.5 3 3.4 7 3.4c2.4 0 4 1.4 5 3 1-1.6 2.6-3 5-3 4 0 6.4 4.1 4.9 8-1.9 4.9-9.9 9.8-9.9 9.8z"/></symbol>
+    <symbol id="spark" viewBox="0 0 24 24"><path d="M12 .8c.9 6.4 4.4 9.9 10.8 11.2-6.4 1.3-9.9 4.8-10.8 11.2C11.1 16.8 7.6 13.3 1.2 12 7.6 10.7 11.1 7.2 12 .8z"/></symbol>
+    <symbol id="paw" viewBox="0 0 24 24"><ellipse cx="12" cy="16.2" rx="5.6" ry="4.6"/><ellipse cx="4.6" cy="10" rx="2.3" ry="2.8" transform="rotate(-20 4.6 10)"/><ellipse cx="9.2" cy="5.6" rx="2.4" ry="3"/><ellipse cx="14.8" cy="5.6" rx="2.4" ry="3"/><ellipse cx="19.4" cy="10" rx="2.3" ry="2.8" transform="rotate(20 19.4 10)"/></symbol>
+    <symbol id="fish" viewBox="0 0 32 20"><path d="M2 10c4-6.5 11-8.5 17-5.2L27 1.5l-1.6 8.5L27 18.5l-8-3.3C13 18.5 6 16.5 2 10z"/></symbol>
+    <symbol id="yarn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></symbol>
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 1.8l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9l7.1-.6z"/></symbol>
+  </defs>
+</svg>
+
 <main class="poster">
-  <p class="eyebrow">Up for adoption</p>
-  <h1>Winkie</h1>
-  <p class="sub">is looking for her <em>forever home</em></p>
+  <div class="card">
+    <!-- washi tape on the corners -->
+    <div class="tape" style="left:-9mm;top:7mm;transform:rotate(-38deg)"></div>
+    <div class="tape" style="right:-9mm;top:7mm;transform:rotate(38deg);background-color:var(--mint)"></div>
 
-  <div class="arch">
-    <div class="frame"><img src="photos/winkie.jpg" alt="Winkie, a ginger and white kitten wearing a recovery cone, sitting and looking ahead"></div>
+    <!-- header -->
+    <p class="upfor">Up for</p>
+    <svg class="headline" viewBox="0 0 1740 330" aria-label="Adoption!">
+      <g font-family="Fredoka" font-weight="700" font-size="300" text-anchor="middle" letter-spacing="6">
+        <text x="882" y="272" fill="#2E2A5A" stroke="#2E2A5A" stroke-width="26" stroke-linejoin="round">ADOPTION!</text>
+        <text x="870" y="258" fill="#F25C8E" stroke="#2E2A5A" stroke-width="26" stroke-linejoin="round" paint-order="stroke">ADOPTION!</text>
+      </g>
+    </svg>
+    <p class="tagline"><span>One wink and you'll fall in love!
+      <svg viewBox="0 0 200 10" preserveAspectRatio="none"><path d="M2 6c18-5 30 4 48 0s30-5 48 0 30 4 48 0 30-5 50 0" fill="none" stroke="#F2913D" stroke-width="3" stroke-linecap="round"/></svg></span></p>
+
+    <!-- Winkie -->
+    <img class="kitty" src="photos/winkie-sticker.png" alt="Winkie, a ginger and white kitten, sitting and looking ahead">
+
+    <!-- speech bubble + trail -->
+    <div class="dot" style="left:80mm;top:94mm;width:5.5mm;height:5.5mm"></div>
+    <div class="dot" style="left:74.5mm;top:100.5mm;width:3.6mm;height:3.6mm"></div>
+    <div class="bubble">Psst... this wink is<br>just for <b>YOU!</b></div>
+
+    <!-- name -->
+    <p class="hi">Hi, I'm</p>
+    <svg class="name" viewBox="0 0 920 300" aria-label="Winkie">
+      <g font-family="Fredoka" font-weight="700" font-size="250" letter-spacing="4">
+        <text x="22" y="242" fill="#2E2A5A" stroke="#2E2A5A" stroke-width="24" stroke-linejoin="round">Winkie</text>
+        <text x="12" y="232" fill="#F2913D" stroke="#2E2A5A" stroke-width="24" stroke-linejoin="round" paint-order="stroke">Winkie</text>
+      </g>
+    </svg>
+
+    <!-- story note -->
+    <div class="note">
+      <span class="tape"></span>
+      I was the <strong>runt of my litter</strong>, found all alone on the street. My eye was badly infected, so I needed <strong>urgent surgery</strong>. I'm healing at the vet now, but when I leave I have nowhere to go...<br><strong>Will you be my person?</strong>
+    </div>
+
+    <!-- traits -->
+    <div class="traits">
+      <span class="trait"><span class="ic" style="background:var(--lilac)">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="#fff" stroke="#2E2A5A" stroke-width="1.6"/><path d="M3.4 10.2c4.9-1.7 10.2-.5 14.8 3.6M4.8 15.8c4-1.9 8.6-1.3 12.4 1.7M8.8 2.9c-1.5 4.9-.6 10.7 3.3 15.9M14.8 2.8c-1.7 3.7-1.4 8.1.9 12.4" fill="none" stroke="#2E2A5A" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </span>Playful</span>
+      <span class="trait"><span class="ic" style="background:var(--pink)">
+        <svg viewBox="0 0 24 24"><use href="#heart" fill="#fff" stroke="#2E2A5A" stroke-width="1.6"/></svg>
+      </span>Cuddly</span>
+      <span class="trait"><span class="ic" style="background:var(--mint)">
+        <svg viewBox="0 0 24 24"><use href="#spark" fill="#fff" stroke="#2E2A5A" stroke-width="1.6"/></svg>
+      </span>Healthy</span>
+    </div>
+
+    <!-- contact -->
+    <section class="contact">
+      <div class="phone-ic"><svg viewBox="0 0 24 24" width="8.5mm" height="8.5mm"><path d="M6.6 2.8l2.6-.4 1.9 4.4-2 1.7c1 2.4 2.9 4.3 5.3 5.3l1.7-2 4.4 1.9-.4 2.6c-.2 1.3-1.4 2.3-2.7 2.2C10.3 17.9 6.1 13.7 5.5 6.5 5.4 5.2 5.3 3 6.6 2.8z" fill="#FFF8F0"/></svg></div>
+      <div><p class="lbl">Call to adopt me</p><p class="num">050 602 6622</p></div>
+      <div class="where"><p class="lbl">Find me at</p><p class="v">Arabian Paw Vet</p></div>
+    </section>
+
+    <!-- scattered stickers -->
+    <svg class="stk" style="right:9mm;top:45mm;width:15mm;height:15mm;transform:rotate(14deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F7A9C4"/></svg>
+    <svg class="stk" style="right:25mm;top:53mm;width:8mm;height:8mm;transform:rotate(-12deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F25C8E"/></svg>
+    <svg class="stk" style="left:7mm;top:27mm;width:12mm;height:12mm"><use href="#spark" class="o"/><use href="#spark" class="f" fill="#FFE9A8"/></svg>
+    <svg class="stk" style="left:17mm;top:44mm;width:7mm;height:7mm"><use href="#spark" class="o"/><use href="#spark" class="f" fill="#8FD6BE"/></svg>
+    <svg class="stk" style="left:46mm;top:10mm;width:7mm;height:7mm;transform:rotate(-12deg)"><use href="#star" class="o"/><use href="#star" class="f" fill="#B7A3F0"/></svg>
+    <svg class="stk" style="right:46mm;top:10mm;width:7mm;height:7mm;transform:rotate(12deg)"><use href="#star" class="o"/><use href="#star" class="f" fill="#B7A3F0"/></svg>
+    <svg class="stk" style="left:70mm;top:185mm;width:13mm;height:13mm;transform:rotate(18deg)"><use href="#paw" class="o"/><use href="#paw" class="f" fill="#F7A9C4"/></svg>
+    <svg class="stk" style="left:80mm;top:200mm;width:9mm;height:9mm;transform:rotate(30deg)"><use href="#paw" class="o"/><use href="#paw" class="f" fill="#F7A9C4"/></svg>
+    <svg class="stk" style="right:12mm;top:99mm;width:14mm;height:9.5mm;transform:rotate(-12deg)" viewBox="0 0 32 20"><use href="#fish" class="o"/><use href="#fish" class="f" fill="#8FD6BE"/><circle cx="8.5" cy="8.6" r="1.4" fill="#2E2A5A"/></svg>
+    <svg class="stk" style="right:5mm;top:196mm;width:11mm;height:11mm" viewBox="0 0 24 24"><use href="#yarn" class="o"/><use href="#yarn" class="f" fill="#B7A3F0"/><path d="M3.4 10.2c4.9-1.7 10.2-.5 14.8 3.6M4.8 15.8c4-1.9 8.6-1.3 12.4 1.7M8.8 2.9c-1.5 4.9-.6 10.7 3.3 15.9M14.8 2.8c-1.7 3.7-1.4 8.1.9 12.4" fill="none" stroke="#2E2A5A" stroke-width="1.1" stroke-linecap="round"/></svg>
+    <svg class="stk" style="left:6mm;top:220mm;width:9mm;height:9mm;transform:rotate(-8deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F2913D"/></svg>
   </div>
-
-  <p class="traits">Playful <i></i> Cuddly <i></i> Healthy</p>
-
-  <section class="contact">
-    <div class="left"><p class="lbl">Meet her at</p><p class="v">Arabian Paw Vet</p></div>
-    <div class="phone"><p class="lbl">To adopt, call</p><p class="v">050 602 6622</p></div>
-  </section>
 </main>
 </body>
 </html>
