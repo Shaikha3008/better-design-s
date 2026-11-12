@@ -70,23 +70,17 @@
     padding: 1.6mm 6mm 1.8mm 6.6mm; border-radius: 99px;
   }
   .headline { left: 8mm; top: 19mm; width: 174mm; height: 33mm; }
-  .tagline {
-    left: 0; right: 0; top: 52mm; text-align: center;
-    font-family: "Patrick Hand", cursive; font-size: 21pt; line-height: 1;
-  }
-  .tagline span { position: relative; display: inline-block; }
-  .tagline svg { position: absolute; left: -2%; width: 104%; bottom: -3.6mm; height: 4mm; }
 
   /* ---------- Winky ---------- */
   .kitty {
-    left: 4mm; top: 63mm; height: 156mm;
+    left: 4mm; top: 56mm; height: 154mm;
     transform: rotate(-3deg); transform-origin: 50% 100%;
     filter: drop-shadow(1.2mm 1.8mm 0 rgba(46,42,90,.18));
   }
 
   /* speech bubble */
   .bubble {
-    left: 93mm; top: 66mm; width: 86mm; padding: 4.4mm 5mm 4.8mm;
+    left: 93mm; top: 56mm; width: 86mm; padding: 4.4mm 5mm 4.8mm;
     background: #fff; border: 0.8mm solid var(--ink); border-radius: 12mm;
     box-shadow: 1.4mm 1.4mm 0 var(--ink);
     font-family: "Patrick Hand", cursive; font-size: 19pt; line-height: 1.05; text-align: center;
@@ -96,25 +90,25 @@
   .dot { border-radius: 50%; background: #fff; border: 0.7mm solid var(--ink); }
 
   /* name */
-  .hi { left: 96mm; top: 103mm; font-family: "Patrick Hand", cursive; font-size: 19pt; transform: rotate(-4deg); }
-  .name { left: 92mm; top: 107mm; width: 92mm; height: 30mm; overflow: visible; }
+  .hi { left: 96mm; top: 90mm; font-family: "Patrick Hand", cursive; font-size: 19pt; transform: rotate(-4deg); }
+  .name { left: 92mm; top: 94mm; width: 92mm; height: 30mm; overflow: visible; }
 
   /* story note */
   .note {
-    left: 93mm; top: 143mm; width: 87mm; padding: 8mm 5.5mm 5mm;
+    left: 88mm; top: 130mm; width: 94mm; padding: 9mm 5.5mm 5.5mm;
     background-color: var(--butter);
-    background-image: repeating-linear-gradient(transparent 0, transparent 6.35mm, rgba(46,42,90,.12) 6.35mm, rgba(46,42,90,.12) 6.6mm);
-    background-position: 0 7.4mm;
+    background-image: repeating-linear-gradient(transparent 0, transparent 7.95mm, rgba(46,42,90,.13) 7.95mm, rgba(46,42,90,.13) 8.2mm);
+    background-position: 0 8.2mm;
     border: 0.7mm solid var(--ink); border-radius: 2mm;
     box-shadow: 1.4mm 1.4mm 0 var(--ink);
     transform: rotate(1.6deg);
-    font-family: "Patrick Hand", cursive; font-size: 14.5pt; line-height: 6.6mm;
+    font-family: "Patrick Hand", cursive; font-size: 18.5pt; line-height: 8.2mm;
   }
   .note strong { font-weight: 400; color: var(--hot); }
   .note .tape { left: 50%; top: -5mm; width: 34mm; height: 9.5mm; transform: translateX(-50%) rotate(-3deg); position: absolute; background-color: var(--mint); }
 
   /* traits */
-  .traits { left: 0; right: 0; top: 214mm; display: flex; justify-content: center; gap: 6mm; }
+  .traits { left: 0; right: 0; top: 213mm; display: flex; justify-content: center; gap: 6mm; }
   .trait {
     display: inline-flex; align-items: center; gap: 2.4mm;
     background: #fff; border: 0.8mm solid var(--ink); border-radius: 99px;
@@ -129,15 +123,18 @@
 
   /* contact ticket */
   .contact {
-    left: 8mm; right: 8mm; top: 236mm; height: 32mm;
+    left: 8mm; right: 8mm; top: 232mm; height: 37mm;
     background: var(--ink); color: var(--cream); border-radius: 5mm;
     display: flex; align-items: center; gap: 5mm; padding: 0 7mm;
   }
-  .contact .phone-ic { width: 16mm; height: 16mm; flex: none; border-radius: 50%; background: var(--hot); display: grid; place-items: center; border: 0.7mm solid var(--cream); }
-  .contact .lbl { font-family: "Patrick Hand", cursive; font-size: 15pt; line-height: 1; color: var(--pink); }
+  .contact .phone-ic { width: 17mm; height: 17mm; flex: none; border-radius: 50%; background: var(--hot); display: grid; place-items: center; border: 0.7mm solid var(--cream); }
+  .contact .phone-ic { position: relative; }
+  .contact .wa { position: absolute; right: -2.8mm; bottom: -2.4mm; width: 9.4mm; height: 9.4mm; border-radius: 50%; background: #25D366; border: 0.6mm solid var(--cream); display: grid; place-items: center; }
+  .contact .dial { white-space: nowrap; }
+  .contact .lbl { font-family: "Patrick Hand", cursive; font-size: 20pt; line-height: 1; color: var(--pink); margin-bottom: 0.8mm; }
   .contact .num { font-weight: 700; font-size: 31pt; letter-spacing: .02em; line-height: 1.05; white-space: nowrap; }
   .contact .where { margin-left: auto; text-align: right; border-left: 0.5mm dashed rgba(255,248,240,.45); padding-left: 6mm; }
-  .contact .where .v { font-weight: 600; font-size: 15pt; line-height: 1.15; white-space: nowrap; }
+  .contact .where .v { font-weight: 600; font-size: 21pt; line-height: 1.1; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -166,15 +163,13 @@
         <text x="870" y="258" fill="#F25C8E" stroke="#2E2A5A" stroke-width="26" stroke-linejoin="round" paint-order="stroke">ADOPTION!</text>
       </g>
     </svg>
-    <p class="tagline"><span>One wink and you'll fall in love!
-      <svg viewBox="0 0 200 10" preserveAspectRatio="none"><path d="M2 6c18-5 30 4 48 0s30-5 48 0 30 4 48 0 30-5 50 0" fill="none" stroke="#F2913D" stroke-width="3" stroke-linecap="round"/></svg></span></p>
 
     <!-- Winky -->
     <img class="kitty" src="photos/winky-sticker.png" alt="Winky, a ginger and white kitten, sitting and looking ahead">
 
     <!-- speech bubble + trail -->
-    <div class="dot" style="left:80mm;top:94mm;width:5.5mm;height:5.5mm"></div>
-    <div class="dot" style="left:74.5mm;top:100.5mm;width:3.6mm;height:3.6mm"></div>
+    <div class="dot" style="left:81mm;top:84mm;width:5.5mm;height:5.5mm"></div>
+    <div class="dot" style="left:75.5mm;top:90.5mm;width:3.6mm;height:3.6mm"></div>
     <div class="bubble">Psst... this wink is<br>just for <b>YOU!</b></div>
 
     <!-- name -->
@@ -207,22 +202,22 @@
 
     <!-- contact -->
     <section class="contact">
-      <div class="phone-ic"><svg viewBox="0 0 24 24" width="8.5mm" height="8.5mm"><path d="M6.6 2.8l2.6-.4 1.9 4.4-2 1.7c1 2.4 2.9 4.3 5.3 5.3l1.7-2 4.4 1.9-.4 2.6c-.2 1.3-1.4 2.3-2.7 2.2C10.3 17.9 6.1 13.7 5.5 6.5 5.4 5.2 5.3 3 6.6 2.8z" fill="#FFF8F0"/></svg></div>
-      <div><p class="lbl">Call to adopt me</p><p class="num">050 602 6622</p></div>
+      <div class="phone-ic"><svg viewBox="0 0 24 24" width="8.5mm" height="8.5mm"><path d="M6.6 2.8l2.6-.4 1.9 4.4-2 1.7c1 2.4 2.9 4.3 5.3 5.3l1.7-2 4.4 1.9-.4 2.6c-.2 1.3-1.4 2.3-2.7 2.2C10.3 17.9 6.1 13.7 5.5 6.5 5.4 5.2 5.3 3 6.6 2.8z" fill="#FFF8F0"/></svg><span class="wa" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="5.6mm" height="5.6mm"><path d="M12 3.4a8.6 8.6 0 0 0-7.5 12.8L3.3 20.7l4.6-1.2A8.6 8.6 0 1 0 12 3.4z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M9.2 7.9c.3-.4.9-.4 1.1 0l.8 1.6c.1.3.1.6-.2.9l-.6.6c.7 1.3 1.7 2.3 3 3l.6-.6c.3-.3.6-.3.9-.2l1.6.8c.4.2.4.8 0 1.1-1 .9-2.4 1.1-3.6.4-1.7-1-3-2.3-4-4-.7-1.2-.5-2.6.4-3.6z" fill="#fff"/></svg></span></div>
+      <div class="dial"><p class="lbl">Call / WhatsApp to adopt me</p><p class="num">050 602 6622</p></div>
       <div class="where"><p class="lbl">Find me at</p><p class="v">Arabian Paw Vet</p></div>
     </section>
 
     <!-- scattered stickers -->
-    <svg class="stk" style="right:9mm;top:45mm;width:15mm;height:15mm;transform:rotate(14deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F7A9C4"/></svg>
-    <svg class="stk" style="right:25mm;top:53mm;width:8mm;height:8mm;transform:rotate(-12deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F25C8E"/></svg>
+    <svg class="stk" style="right:3mm;top:49mm;width:14mm;height:14mm;transform:rotate(14deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F7A9C4"/></svg>
+    <svg class="stk" style="right:3mm;top:125mm;width:9mm;height:9mm;transform:rotate(-12deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F25C8E"/></svg>
     <svg class="stk" style="left:7mm;top:27mm;width:12mm;height:12mm"><use href="#spark" class="o"/><use href="#spark" class="f" fill="#FFE9A8"/></svg>
     <svg class="stk" style="left:17mm;top:44mm;width:7mm;height:7mm"><use href="#spark" class="o"/><use href="#spark" class="f" fill="#8FD6BE"/></svg>
     <svg class="stk" style="left:46mm;top:10mm;width:7mm;height:7mm;transform:rotate(-12deg)"><use href="#star" class="o"/><use href="#star" class="f" fill="#B7A3F0"/></svg>
     <svg class="stk" style="right:46mm;top:10mm;width:7mm;height:7mm;transform:rotate(12deg)"><use href="#star" class="o"/><use href="#star" class="f" fill="#B7A3F0"/></svg>
     <svg class="stk" style="left:70mm;top:185mm;width:13mm;height:13mm;transform:rotate(18deg)"><use href="#paw" class="o"/><use href="#paw" class="f" fill="#F7A9C4"/></svg>
     <svg class="stk" style="left:80mm;top:200mm;width:9mm;height:9mm;transform:rotate(30deg)"><use href="#paw" class="o"/><use href="#paw" class="f" fill="#F7A9C4"/></svg>
-    <svg class="stk" style="right:12mm;top:99mm;width:14mm;height:9.5mm;transform:rotate(-12deg)" viewBox="0 0 32 20"><use href="#fish" class="o"/><use href="#fish" class="f" fill="#8FD6BE"/><circle cx="8.5" cy="8.6" r="1.4" fill="#2E2A5A"/></svg>
-    <svg class="stk" style="right:5mm;top:196mm;width:11mm;height:11mm" viewBox="0 0 24 24"><use href="#yarn" class="o"/><use href="#yarn" class="f" fill="#B7A3F0"/><path d="M3.4 10.2c4.9-1.7 10.2-.5 14.8 3.6M4.8 15.8c4-1.9 8.6-1.3 12.4 1.7M8.8 2.9c-1.5 4.9-.6 10.7 3.3 15.9M14.8 2.8c-1.7 3.7-1.4 8.1.9 12.4" fill="none" stroke="#2E2A5A" stroke-width="1.1" stroke-linecap="round"/></svg>
+    <svg class="stk" style="right:12mm;top:86mm;width:14mm;height:9.5mm;transform:rotate(-12deg)" viewBox="0 0 32 20"><use href="#fish" class="o"/><use href="#fish" class="f" fill="#8FD6BE"/><circle cx="8.5" cy="8.6" r="1.4" fill="#2E2A5A"/></svg>
+    <svg class="stk" style="right:4mm;top:199mm;width:11mm;height:11mm" viewBox="0 0 24 24"><use href="#yarn" class="o"/><use href="#yarn" class="f" fill="#B7A3F0"/><path d="M3.4 10.2c4.9-1.7 10.2-.5 14.8 3.6M4.8 15.8c4-1.9 8.6-1.3 12.4 1.7M8.8 2.9c-1.5 4.9-.6 10.7 3.3 15.9M14.8 2.8c-1.7 3.7-1.4 8.1.9 12.4" fill="none" stroke="#2E2A5A" stroke-width="1.1" stroke-linecap="round"/></svg>
     <svg class="stk" style="left:6mm;top:220mm;width:9mm;height:9mm;transform:rotate(-8deg)"><use href="#heart" class="o"/><use href="#heart" class="f" fill="#F2913D"/></svg>
   </div>
 </main>
